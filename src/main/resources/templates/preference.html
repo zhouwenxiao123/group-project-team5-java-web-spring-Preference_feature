@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Preference</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+</head>
+<body>
+<from lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Preferences_List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+
+    <style type="text/css">
+      .box {
+        width: 1000px;
+        margin: 50px auto;
+        border: 1px solid #DCDFE6;
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .box:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+      }
+
+      .box-title {
+        text-align: center;
+      }
+
+      .box-table {
+        margin-top: 20px;
+      }
+      .box-nav{
+        text-align: center;
+      }
+      .navbar-custom {
+        background-color: #C1E1C1;
+      }
+      /* Modify brand and text color */
+      .navbar-custom .navbar-brand,
+      .navbar-custom .navbar-text {
+        color: #355E3B;
+      }
+    </style>
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" th:href="@{/index}">MEALit</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/recipe-display}">Recipes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/users}">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/preference}">Preferences</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--创建一个表单-->
+  <input type="hidden" name="_method" value="delete">
+  <div class="box">
+    <div class="form-group">
+      <table class="table table-bordered box-table">
+        <tr>
+          <th>Preference_id</th>
+          <th>gluten</th>
+          <th>vegan</th>
+          <th>vegetarian</th>
+          <th>nuts</th>
+          <th>seafood</th>
+          <th>shellfish</th>
+          <th>milk</th>
+          <th>eggs</th>
+          <th>peanuts</th>
+          <th>wheat</th>
+          <th>soybeans</th>
+          <th>operate</th>
+        </tr>
+        <tr th:each="preference : ${preferenceorder}">
+
+          <td th:text="${preferences.gluten}"></td>
+          <td th:text="${preferences.vegan}"></td>
+          <td th:text="${preferences.vegetarian}"></td>
+          <td th:text="${preferences.nuts}"></td>
+          <td th:text="${preferences.seafood}"></td>
+          <td th:text="${preferences.shellfish}"></td>
+          <td th:text="${preferences.milk}"></td>
+          <td th:text="${preferences.eggs}"></td>
+          <td th:text="${preferences.peanuts}"></td>
+          <td th:text="${preferences.wheat}"></td>
+          <td th:text="${preferences.soybeans}"></td>
+          <td> <!--class="btn btn-sm btn-danger deleteBtn"-->
+            <!--1 给当前按钮绑定样式deleteBtn
+  2 给按钮绑定自定义属性-->
+
+            <a th:href="@{/edit(id=${preferences.preferencesId})}">Add</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  </div>
+  </form>
+  </body>
+</from>
+</body>
+</html>
